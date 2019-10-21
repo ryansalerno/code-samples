@@ -1,0 +1,70 @@
+.back-and-forth {
+	overflow: hidden;
+
+	.row {
+		position: relative;
+		padding-top: 4.5em;
+
+		+ .row {
+			margin-top: 4.5em;
+		}
+
+		&:nth-of-type(2n){
+			z-index: 1;
+
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -1em;
+				right: -1em;
+				bottom: -4.5em;
+				background: rgba(0,0,0,.05);
+				z-index: -1;
+			}
+		}
+
+		&:last-of-type {
+			padding-bottom: 1.5em; // .section already has 3em of padding
+		}
+	}
+}
+
+@media (min-width: 50em){
+	.back-and-forth {
+		.back {
+			padding-right: 3em;
+			flex: 0 1 40%;
+		}
+		.row {
+			display: flex;
+
+			&:nth-of-type(even) {
+				.back {
+					padding: 0 0 0 3em;
+					order: 2;
+				}
+			}
+		}
+		.forth {
+			margin: 0;
+			flex: 0 1 60%;
+		}
+	}
+}
+
+@media (min-width: $content-width){
+	.back-and-forth {
+		.row {
+			&:nth-of-type(2n){
+				&:after {
+					left: -50vw;
+					right: -50vw;
+					// we're already overflow hidden, so it doesn't really matter if we're further off the edge than necessary
+					// left: calc(-50vw + (#{$content-width} / 2));
+					// right: calc(-50vw + (#{$content-width} / 2));
+				}
+			}
+		}
+	}
+}

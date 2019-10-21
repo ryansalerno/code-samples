@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" type="text/css" media="all" />
+
+	<!--
+	this is the full site's compiled stylesheet, for simplicity of rendering
+	to see styles related to just this module, check: ./src/css/
+	-->
+	<link rel="stylesheet" href="dist/style.css" type="text/css" media="all">
+</head>
+
+<body>
+	<section class="section back-and-forth text-center bg-alt">
+		<div class="content-width">
+			<h2 class="section-header">Back and Forth</h2>
+			<div class="section-intro post-content less-wide">
+				<p>This module is meant to take rows of content (images and text) and it will display them with the image taking up 1/3rd of the row and the content filling the rest.</p>
+				<p>Then, just for fun, it’ll automatically reverse the order of the next row. Isn’t that grand?</p>
+			</div>
+			<div class="row">
+				<div class="back">
+					<figure><img src="https://source.unsplash.com/960x540/?dog" width="960" height="540"/></figure>
+				</div>
+				<div class="forth text-left">
+					<div class="post-content">
+						<p>This content can have a title, or not, and you can include a button below it, or <a href="https://test1.zenman.com/sites/barber-nichols/barber-nichols/company/working-with-us/">create some inline links</a> using the editor. Or both! The world is your oyster, so get shucking.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="back">
+					<figure><img src="https://source.unsplash.com/960x540/?magic" width="960" height="540"/></figure>
+				</div>
+				<div class="forth text-left">
+					<h3>This row is reversed!</h3>
+					<div class="post-content">
+						<p>Everything is set up the same in the back-end, but we’ll make sure it reverses nice and automatically, because that’s just so much nicer than fiddling with things. And when it needs to break down for mobile, we can keep the order consistent so the experience is nicer for the user.</p>
+						<p>When I was a kid, I wanted to be a magician. I guess this is as close as I’ve gotten.</p>
+					</div><a href="https://test1.zenman.com/sites/barber-nichols/barber-nichols/company/contact/" class="button">And a Button</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="back">
+					<div class="videoholder clickable-embed">
+						<a class="embed-content bg-img" style="background-image: url('https://i.ytimg.com/vi/mRfSM-lv55I/sddefault.jpg');" href="https://www.youtube.com/watch?v=mRfSM-lv55I" data-oembed="https://www.youtube.com/embed/mRfSM-lv55I?feature=oembed&amp;autoplay=1">
+							<figure class="play-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0a50 50 0 1 0 50 50A50 50 0 0 0 50 0zM33.81 70.32V29.68a3 3 0 0 1 4.47-2.59l35.2 20.33a3 3 0 0 1 0 5.16l-35.2 20.33a3 3 0 0 1-4.47-2.59z"/></svg></figure>
+						</a>
+					</div>
+				</div>
+				<div class="forth text-left">
+					<h3>What's this?</h3>
+					<div class="post-content">
+						<p>The image can also be a video. The video will play in a lightbox when it’s clicked. All of this happens automatically when you just paste a URL to YouTube (or Vimeo) into the backend there. Truly, we’re living in a time of wonder and possibility.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="src/js/modal-videos.js"></script>
+</body>
+
+</html>
