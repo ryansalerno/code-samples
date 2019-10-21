@@ -1,0 +1,143 @@
+.map-holder {
+	dt {
+		background-color: $color-blue;
+		color: #fff;
+		border-bottom: 3px solid $color-blue-light;
+		padding: .75rem;
+		margin: 1.5rem 0;
+	}
+
+	dd {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin: 0;
+		padding: .75rem;
+
+		+ dd {
+			border-top: 1px solid $color-blue;
+		}
+
+		> div {
+			flex: 1 0 auto;
+		}
+
+		&:hover {
+			background-color: rgba($color-bg-alt, .5);
+		}
+	}
+
+	p {
+		margin-top: .75em;
+	}
+
+	br {
+		display: block;
+		margin-top: 0;
+	}
+
+	.distance {
+		font-style: italic;
+	}
+
+	.meta {
+		font-size: 75%;
+
+		li {
+			background-color: $color-blue-light;
+			color: #fff;
+			border-radius: .5em;
+			padding: .375em .75em;
+
+			+ li {
+				margin-top: .75em;
+			}
+		}
+	}
+}
+
+#map {
+	height: 66vh;
+
+	// unset conflicting styles
+	button {
+		min-width: auto;
+	}
+}
+
+#map-filters {
+	&.hidden + * {
+		// margin-top: 0; // doesn't do anything because of the first DT margin collapsing -- do we want to bother chasing this all the way?
+	}
+}
+
+#no-results {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	background-color: #fff;
+	padding: 3em;
+	box-shadow: 0 0 1.5em rgba(0,0,0,.5);
+	border-radius: .5em;
+}
+
+#map-listings {
+	&.js {
+		dd {
+			cursor: pointer;
+		}
+	}
+}
+
+.map-results {
+	margin-top: 0;
+	padding: 1em;
+
+	.meta {
+		margin: 0;
+	}
+}
+
+.map-popup {
+	// default Google style overrides
+	font-family: $font-body;
+	font-size: 1rem;
+	font-weight: 400;
+
+	.meta {
+		margin-top: .75em;
+
+		li {
+			display: inline-block;
+
+			+ li {
+				margin: 0 0 0 .75em;
+			}
+		}
+	}
+}
+
+@media (min-width: 60em){
+	.map-holder {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+	}
+
+	#map {
+		position: sticky !important;
+		top: 0;
+		right: 0;
+		order: 2;
+		flex: 1 0 auto;
+		height: 100vh; // probably we want to make this everything but the header, but I'm not sure what that looks like without the hero (needs JS maybe?)
+	}
+
+	.map-results {
+		flex-basis: 33%;
+		min-width: 25em;
+		max-width: 35em;
+	}
+}
