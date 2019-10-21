@@ -1,0 +1,113 @@
+.vertical-tabs {
+	.tab {
+		padding: .75em;
+		background: #fff;
+		color: $color-body;
+	}
+
+	.tab-title {
+		margin-top: 0;
+		color: $color-secondary;
+	}
+
+	.button-group {
+		margin-bottom: 3px;
+	}
+
+	figure.icon {
+		display: inline-block;
+		color: $color-primary;
+	}
+
+	figure.videoholder {
+		display: none;
+	}
+
+	.tabs-nav {
+		display: none;
+	}
+}
+
+@media (min-width: 50em){
+	.vertical-tabs {
+		&.js {
+			.tab-title {
+				margin-top: 1.5rem;
+			}
+
+			figure.videoholder {
+				display: block;
+				background-color: $color-bg-alt;
+			}
+
+			.tabs-content {
+				position: relative;
+				background: #fff;
+				overflow: hidden;
+			}
+
+			.tab {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				margin: 0;
+				opacity: 0;
+				transition: opacity .5s ease, transform .5s ease;
+				transform: translateX(-100%);
+
+				&.active {
+					position: static;
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+		}
+
+		.tabs-nav {
+			display: block;
+
+			background-color: $color-bg;
+			color: $color-body;
+
+			li {
+				margin-top: 0;
+				padding: .75em;
+				cursor: pointer;
+
+				+ li {
+					border-top: 1px solid $color-bg-alt;
+				}
+
+				&.active,
+				&:focus,
+				&:hover {
+					background-color: #fff;
+				}
+
+				&.active {
+					.tab-title {
+						&:after {
+							transform: translateX(.5em);
+							// display: none;
+						}
+					}
+				}
+			}
+
+			.tab-title {
+				margin-top: 0;
+				color: $color-highlight;
+			}
+
+			svg {
+				color: $color-primary;
+			}
+
+			p {
+				margin-top: 0;
+			}
+
+		}
+	}
+}
