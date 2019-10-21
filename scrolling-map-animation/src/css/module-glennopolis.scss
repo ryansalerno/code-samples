@@ -1,0 +1,284 @@
+.glennopolis {
+	position: relative;
+}
+
+.city-holder {
+	// max-width: 15.888vh;
+	margin: 0 auto;
+	overflow: hidden;
+	// height: 0;
+	// padding-bottom: 62.94%;
+}
+
+#glennopolis {
+	--trunk: #999;
+	--lt: #d8d8d8;
+	--dk: #a6a6a6;
+	--grn: #eee;
+	--shade: #777;
+	--b1: #f1f1f9;
+	--b2: #c7c8c9;
+	--b3: #ebebeb;
+	--b4: #d8d8d8;
+	--b5: #b7b7b7;
+
+	&.m-active,
+	&.campus .m-campus,
+	&.hospital .m-hospital {
+		--trunk: #f1694a;
+		--lt: #9e9b98;
+		--dk: #4c4c4c;
+		--grn: #cedf73;
+		--shade: #4c4c4c;
+		--b1: #f1ece5;
+		--b2: #0f2647;
+		--b3: #325689;
+		--b4: #f1694a;
+		--b5: #9e2c21;
+	}
+
+	&.m-active {
+		transform: scale(1) translate(0, 0);
+	}
+
+	.m-lt { // light gray
+		fill: #d8d8d8;
+		fill: var(--lt);
+	}
+	.m-dk { // dark gray
+		fill: #a6a6a6;
+		fill: var(--dk);
+	}
+	.m-grn { // green
+		fill: #eee;
+		fill: var(--grn);
+	}
+
+	.m-shade { // shadows
+		opacity: .5;
+		fill: #777;
+		fill: var(--shade);
+	}
+	.m-b1 { // 1. tan
+		fill: #f1f1f9;
+		fill: var(--b1);
+	}
+	.m-b2 { // 2. dark blue
+		fill: #c7c8c9;
+		fill: var(--b2);
+	}
+	.m-b3 { // 3. light blue
+		fill: #ebebeb;
+		fill: var(--b3);
+	}
+	.m-b4 { // 4. orange
+		fill: #d8d8d8;
+		fill: var(--b4);
+	}
+	.m-b5 { // 5. red
+		fill: #b7b7b7;
+		fill: var(--b5);
+	}
+
+	svg {
+		width: 100%;
+		transform-origin: 0 0;
+		transition: transform .5s linear;
+		backface-visibility: hidden;
+	}
+
+	&.scenario1 .scene1,
+	&.scenario2 .scene2,
+	&.scenario3 .scene3,
+	&.scenario4 .scene4 {
+		opacity: 1;
+	}
+
+	&.scenario4 {
+		.m-parks {
+			--grn: #eee;
+		}
+
+		.m-sz {
+			opacity: 0;
+			animation: none;
+		}
+	}
+}
+
+// this transition works as intended/expected in Firefox, but Chrome has a very frustrating bug where
+// it causes the custom-properties to not update individually (even though the inspector will show the right value for the variable)
+// so, trees will all be either gray or green, but never some gray and some green like we're trying to do
+// the fix is removing this one line and then trying to target everything BUT the symbols below for Chrome
+// extra fun is that the inlined <g> symbols work fine in Chrome, but pulling the trees out of <defs> and changing them to <g>s does nothing
+@supports (-moz-appearance:meterbar) {
+	#glennopolis path,
+	.m-symbol path { // shadow-dom is tricky
+		transition: fill .4s linear;
+	}
+}
+#glennopolis svg > path,
+#glennopolis g path {
+	transition: fill .4s linear;
+}
+
+.m-sz { // safe zones
+	fill: none;
+	stroke: #f1694a;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 6;
+	stroke-dasharray: 39 13;
+	opacity: 0;
+	transition: opacity .4s linear;
+}
+.campus .m-campus,
+.hospital .m-hospital {
+	.m-sz {
+		opacity: 1;
+		animation: ants 2s infinite linear;
+	}
+}
+
+.m-q {
+	opacity: 0;
+}
+
+.scene1,
+.scene2,
+.scene3,
+.scene4 {
+	opacity: 0;
+	transition: opacity .4s linear;
+
+	use {
+		transform-origin: 0 0;
+		filter: drop-shadow(0 0 4px rgba(#4c4c4c, .3));
+	}
+}
+
+.intersectable {
+	.city-holder {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		margin-bottom: -20vh;
+		padding-top: 20vh;
+	}
+
+	.scenario-holder {
+		> li {
+			margin: 0 0 100vh 0;
+
+			&:first-of-type {
+				margin: -33vh 0 33vh;
+			}
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.scenario-holder {
+	position: relative;
+	z-index: 1;
+	counter-reset: scenarios;
+	margin: 0 3em;
+
+	> li {
+		min-height: 20em;
+		background: #fff;
+		box-shadow: 0 0 1em rgba(0,0,0,.25);
+		padding: 1.5em;
+
+		&:first-of-type {
+			padding: 0;
+			background: transparent;
+			box-shadow: none;
+
+			&:before {
+				display: none;
+			}
+		}
+	}
+
+	h3 {
+		position: relative;
+		margin-left: 2rem;
+
+		&:before {
+			position: absolute;
+			counter-increment: scenarios;
+			content: counter(scenarios);
+			transform: translateX(-100%);
+			line-height: .5;
+			font-size: 3rem;
+			font-weight: 700;
+			color: $color-bg;
+			width: 2rem;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: -2px;
+			left: 0;
+			width: 3rem;
+			height: 2px;
+			background: $color-primary;
+		}
+	}
+}
+
+@media (min-width: $content-width){
+	.intersectable {
+		.city-holder {
+			margin-bottom: 0;
+			padding-top: 0;
+		}
+
+		.scenario-holder {
+			margin: 0 0 0 6em;
+			max-width: 30em;
+
+			> li {
+				&:first-of-type {
+					margin: -33vh 0 20vh;
+				}
+
+				&:last-of-type {
+					margin-bottom: 100vh;
+				}
+			}
+		}
+	}
+
+	.scenario-holder {
+		margin: 0 6em;
+
+		h3 {
+			padding-top: 1.125rem;
+			margin-left: 3rem;
+
+			&:before {
+				top: 0;
+				font-size: 4.5rem;
+				line-height: .66;
+				width: 3rem;
+			}
+		}
+	}
+}
+
+@keyframes ants {
+	// stroke-dasharray is "39 13", so a full cycle is 39 + 13 = 52
+	to {stroke-dashoffset: 52;}
+}
+
+@keyframes mgs {
+	0% { transform: translateY(0); }
+	90% { transform: translateY(-.5em); }
+	100% { transform: translateY(0); }
+}
