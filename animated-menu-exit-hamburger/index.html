@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Muli:400,700|Roboto:300,500&display=swap" type="text/css" media="all" />
+
+	<!--
+	this is the full site's compiled stylesheet, for simplicity of rendering
+	to see styles related to just this module, check: ./src/css/
+	-->
+	<link rel="stylesheet" href="dist/style.css" type="text/css" media="all">
+</head>
+
+<body class="home">
+	<script type="text/javascript">document.documentElement.className = 'js';</script>
+	<header class="main" id="fixed-header">
+		<div class="content-width horiz end">
+			<a id="logo" href="#" itemscope itemtype="http://schema.org/Organization" title="Zenman">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 13.738"><path d="M97.88,1.567A1.029,1.029,0,0,1,98.93.526a1.039,1.039,0,1,1-1.05,1.041Zm1.927,0A.835.835,0,0,0,98.93.7a.821.821,0,0,0-.851.872.82.82,0,0,0,.851.867A.835.835,0,0,0,99.807,1.567Zm-.4.565h-.233l-.189-.284a.281.281,0,0,1-.067,0h-.145v.279h-.214V.986h.354a.438.438,0,0,1,.494.436.4.4,0,0,1-.228.372Zm-.494-.449c.2,0,.281-.1.281-.256s-.083-.262-.281-.262h-.14v.518Z" /><path d="M17.88,10.166l5.752-6.353H18.068V1.259h9.488V3.481L21.784,9.834h5.772v2.554H17.88Z" /><path d="M29.093,6.886V6.845a5.541,5.541,0,0,1,5.5-5.793c3.716,0,5.419,2.886,5.419,6.042,0,.249-.021.539-.042.83H32.228a2.58,2.58,0,0,0,2.719,2.18,3.648,3.648,0,0,0,2.7-1.142l1.806,1.6a5.566,5.566,0,0,1-4.547,2.076A5.566,5.566,0,0,1,29.093,6.886Zm7.848-.934A2.387,2.387,0,0,0,34.6,3.585a2.481,2.481,0,0,0-2.409,2.367Z" /><path d="M42.36,1.259h3.156V2.837a3.938,3.938,0,0,1,3.26-1.785c2.387,0,3.778,1.578,3.778,4.132v7.2H49.4V6.18c0-1.495-.707-2.263-1.911-2.263s-1.972.768-1.972,2.263v6.208H42.36Z" /><path d="M55.3,1.259h3.156V2.837a3.974,3.974,0,0,1,3.28-1.785,3.329,3.329,0,0,1,3.135,1.765,4.584,4.584,0,0,1,3.655-1.765c2.346,0,3.758,1.412,3.758,4.09v7.246H69.123V6.18c0-1.495-.665-2.263-1.848-2.263s-1.91.768-1.91,2.263v6.208H62.209V6.18c0-1.495-.664-2.263-1.848-2.263s-1.91.768-1.91,2.263v6.208H55.3Z" /><path d="M74.355,9.191V9.149c0-2.429,1.848-3.55,4.485-3.55a7.907,7.907,0,0,1,2.72.457V5.869c0-1.308-.81-2.035-2.388-2.035a8.185,8.185,0,0,0-3.073.6l-.788-2.408a9.815,9.815,0,0,1,4.318-.893,5.138,5.138,0,0,1,3.758,1.246,4.846,4.846,0,0,1,1.2,3.55v6.457H81.539v-1.2A4.279,4.279,0,0,1,78.176,12.6C76.079,12.6,74.355,11.391,74.355,9.191ZM81.6,8.464V7.9a4.9,4.9,0,0,0-2.015-.415c-1.349,0-2.179.54-2.179,1.537v.041c0,.851.706,1.35,1.723,1.35C80.605,10.416,81.6,9.606,81.6,8.464Z" /><path d="M87.311,1.259h3.156V2.837a3.938,3.938,0,0,1,3.26-1.785c2.388,0,3.779,1.578,3.779,4.132v7.2H94.35V6.18c0-1.495-.706-2.263-1.91-2.263s-1.973.768-1.973,2.263v6.208H87.311Z" /><path class="icon" d="M7.373,12.122c.027-.028,7.8-7.6,0-7.6s-.034,7.572,0,7.605C3.685,10.721,0,9.32,0,12.122s3.686,1.4,7.372,0h0c3.687,1.4,7.372,2.8,7.372,0S11.059,10.721,7.373,12.122Zm0-7.764C8.271,4.358,9,3.382,9,2.179S8.271,0,7.372,0,5.745.975,5.745,2.179,6.473,4.358,7.372,4.358Z" /></svg>
+			</a>
+
+			<input id="nav-hamburger" class="hidden" type="checkbox" autocomplete="off" />
+			<input id="search-toggle" class="toggler" type="checkbox" autocomplete="off" />
+
+			<label class="toggler search-toggle" for="search-toggle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="big icon stroked"><circle cx="6.25" cy="6.25" r="4.5" stroke-width="1.5" /><path d="M14.5,14.5L9.5,9.5" stroke-width="2" /></svg></label>
+			<aside class="toggle-target header-search">
+				<form role="search" method="get" class="search-form horiz centered margins-off" action="#">
+					<label for="search-5daf705b17e3d">Search for:</label>
+					<input id="search-5daf705b17e3d" type="search" class="search-field" placeholder="Search" value="" name="s" />
+					<button type="submit" class="search-submit secondary link-arrow">Search</button>
+				</form>
+			</aside>
+
+			<label class="hamburger horiz" for="nav-hamburger">
+				<svg id="hb1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 100"><path id="hb_me" d="M4,100 4,0 24,0 58,77 92,0 112,0 112,100 92,100 92,36 78,68 64,100 52,100 38,68 24,36 24,100z" /></svg>
+				<svg id="hb2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 100"><path id="hb_ex" d="M12,0 58,0 104,0 104,15 58,15 12,15z M12,39 104,39 104,54 12,54z M12,85 58,85 104,85 104,100 58,100 12,100z" /></svg>
+				<svg id="hb3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 100"><path id="hb_ni" d="M16,100 16,0 34,0 34,0 84,72 84,0 100,0 100,100 82,100 82,100 32,28 32,100z" /></svg>
+				<svg id="hb4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 100"><path id="hb_ut" d="M26.5,0 26.5,50 Q26.5,93 58,91 T89.5,50 M89.5,50 89.5,0" /></svg>
+			</label>
+
+			<nav class="header-nav">
+				<ul id="menu-main-menu" class="menu margins-off">
+					<li class="menu-item menu-item-has-children main-menu-item menu-item-depth-0">
+						<a href="#" class="menu-link main-menu-link">Services</a>
+						<input id="nt-109" type="checkbox" class="nav-toggler" />
+						<label for="nt-109" class="nav-toggler"></label>
+						<ul class="sub-menu menu-depth-1">
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Web Design</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">UI/UX</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Branding</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Web Development</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Software</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Content</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Digital Marketing</a></li>
+						</ul>
+					</li>
+					<li class="menu-item menu-item-has-children main-menu-item menu-item-depth-0">
+						<a href="#" class="menu-link main-menu-link">Culture</a>
+						<input id="nt-118" type="checkbox" class="nav-toggler" />
+						<label for="nt-118" class="nav-toggler"></label>
+						<ul class="sub-menu menu-depth-1">
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Team</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Process</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Careers</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Accolades</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Library</a></li>
+						</ul>
+					</li>
+					<li class="menu-item main-menu-item menu-item-depth-0">
+						<a href="#" class="menu-link main-menu-link">Case Studies</a>
+						<input id="nt-138" type="checkbox" class="nav-toggler" />
+						<label for="nt-138" class="nav-toggler"></label>
+						<ul class="sub-menu menu-depth-1">
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">RE/MAX</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Boppy</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Frontier</a></li>
+						</ul>
+					</li>
+					<li class="menu-item menu-item-has-children main-menu-item menu-item-depth-0">
+						<a href="#" class="menu-link main-menu-link">Ideas</a>
+						<input id="nt-141" type="checkbox" class="nav-toggler" />
+						<label for="nt-141" class="nav-toggler"></label>
+						<ul class="sub-menu menu-depth-1">
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Some Category</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Another Category</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">E-books</a></li>
+						</ul>
+					</li>
+					<li class="menu-item menu-item-has-children main-menu-item menu-item-depth-0">
+						<a href="#" class="menu-link main-menu-link">Contact</a>
+						<input id="nt-144" type="checkbox" class="nav-toggler" />
+						<label for="nt-144" class="nav-toggler"></label>
+						<ul class="sub-menu menu-depth-1">
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Instagram</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Facebook</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Twitter</a></li>
+							<li class="menu-item sub-menu-item menu-item-depth-1"><a href="#" class="menu-link sub-menu-link">Github</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main class="site-main" role="main">
+		<div class="content-width big-zen">
+			<div class="videoholder"><video src="dist/zen_lipsum.mp4" poster="dist/poster.jpg" muted autoplay loop></video></div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35"><path id="big-zen" d="M0,9.5 0,9.5 0,26.5z M32.5,0 32.5,8 32.5,25.5 32.5,25.5 32.5,35 34.5,35 34.5,0z M63.5,0 63.5,9.5 63.5,9.5 63.5,13 63.5,13 63.5,21.5 63.5,21.5 63.5,25.5 63.5,25.5 63.5,35 65.5,35 65.5,0z M76,0 88.5,0 88.5,0z M77,35 77,35 90,35z" /></svg>
+		</div>
+
+		<section class="section text-center content-width">
+			<h1 class="section-header">Zenman is your <strong>digital growth agency</strong></h1>
+			<div class="text-left less-wide">Zenman is an <strong>award-winning</strong>, innovative growth marketing agency with expertise in product development, digital marketing, brand strategy and responsive web design. We build <strong>better digital solutions</strong> by focusing on the why and the how to help you find hidden growth opportunities in your business through mindful collaboration and adaptive creativity.</div>
+			<p class="horiz button-group"><a href="#" class="btn link-arrow">Case Studies</a><a href="#" class="btn secondary link-arrow">Services</a></p>
+		</section>
+	</main>
+
+	<script type="text/javascript" src="dist/script.js"></script>
+</body>
+
+</html>

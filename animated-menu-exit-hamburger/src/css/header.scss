@@ -1,0 +1,43 @@
+header.main {
+	padding: 2em 0 1em;
+	margin: 0;
+	position: fixed;
+	left: .5em;
+	right: .5em;
+	z-index: 3;
+}
+
+header.main > div {
+	position: relative;
+	align-items: center;
+}
+
+#logo {
+	position: absolute;
+	left: 0;
+	display: block;
+	line-height: 0;
+	overflow: hidden;
+	width: 100%;
+	max-width: 25em;
+}
+#logo path:not(.icon) {
+	fill: $color-tonal;
+	transform: translateY(-100%);
+	opacity: 0;
+}
+#logo path.icon {
+	fill:$color-primary;
+}
+
+@media (min-width: $content-width + 2em){
+	header.main {
+		left: 0;
+		right: 0;
+	}
+	#logo:hover path:not(.icon) {
+		transition: transform .2s linear, opacity .3s linear;
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
