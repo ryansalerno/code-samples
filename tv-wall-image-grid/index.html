@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto%3A400%2C700%7CMontserrat%3A300%2C600&display=swap" type="text/css" media="all" />
+
+	<!--
+	this is the full site's compiled stylesheet, for simplicity of rendering
+	to see styles related to just this module, check: ./src/css/
+	-->
+	<link rel="stylesheet" href="dist/style.css" type="text/css" media="all">
+</head>
+
+<body>
+	<section class="section image-grid text-center">
+		<div class="content-width">
+			<h2 class="h1 section-header">Unit A Photos</h2>
+			<ul class="tv-wall no-bullets x7">
+				<li class="spotlight">
+					<figure>
+						<div class="videoholder"><img alt=""></div>
+						<figcaption>Click any small image to view it here.</figcaption>
+					</figure>
+				</li>
+				<li>
+					<!--
+					we would normally link to a larger image here since WP makes several copies for us, and that's a better user experience for when the anchor gets followed (no JS, or opening in a new tab)
+					but since this demo doesn't need to keep an extra copy of every image just for that fallback behavior, we're just going to use the one image we're storing for the spotlight
+					-->
+					<a href="dist/01.jpg">
+						<img src="dist/01.jpg" alt="" data-caption="WW8gZGF3ZywgSSBoZWFyZCB5b3UgbGlrZSBzY3JlZW5zLi4uLg=="/>
+					 </a>
+				 </li>
+				<li>
+					<a href="dist/02.jpg">
+						<img src="dist/02.jpg" alt="" data-caption="QSBuaWNlLCB3aWRlIGVzdGFibGlzaGluZyBzaG90Lg=="/>
+					 </a>
+				 </li>
+				<li>
+					<a href="dist/03.jpg">
+						<img src="dist/03.jpg" alt="" data-caption="VGhlIGNhbG0gYmVmb3JlIHRoZSBzdG9ybS4="/>
+					 </a>
+				 </li>
+				<li>
+					<a href="dist/04.jpg">
+						<img src="dist/04.jpg" alt="" data-caption="Q3JldyB3b3JraW5nIGluc2lkZSBhIG1vYmlsZSB0diBzdHVkaW8u"/>
+					 </a>
+				 </li>
+				<li>
+					<a href="dist/05.jpg">
+						<img src="dist/05.jpg" alt="" data-caption="QW5kIHlvdSB0aGluayB5b3UgaGF2ZSB0b28gbWFueSB0aGluZ3MgdG8gd2F0Y2ggb24gVFYgcmlnaHQgbm93Lg=="/>
+					 </a>
+				 </li>
+				<li>
+					<a href="dist/06.jpg">
+						<img src="dist/06.jpg" alt="" data-caption="UGF0Y2ggY2FibGVzIHN0ZWFsaW5nIGZvY3VzIHByb3ZpZGUgYSBuZWF0IGRlcHRoIG9mIGZpZWxkLg=="/>
+					 </a>
+				 </li>
+				<li>
+					<a href="dist/07.jpg">
+						<img src="dist/07.jpg" alt="" data-caption="QSBkYXJrIHJvb20gd2l0aCBnbG93aW5nIGJ1dHRvbnMgYW5kIHNjcmVlbnMu"/>
+					 </a>
+				 </li>
+			</ul>
+		</div>
+	</section>
+
+	<aside class="hidden section bg-alt text-center">
+		<h3>How many images should we lay out?</h3>
+		<input id="monitor-count" type="range" min="3" max="9" value="7" autocomplete="off" />
+	</aside>
+	<script type="text/javascript">
+		var slider = document.getElementById('monitor-count'),
+			gallery = document.querySelector('.tv-wall'),
+			captions = [
+				0,1,2,3,
+				'Crew working inside a mobile tv studio.',
+				'And you think you have too many things to watch on TV right now.',
+				'Patch cables stealing focus provide a neat depth of field.',
+				'A dark room with glowing buttons and screens.',
+				'Just look at that lever. LOOK AT IT. How can you not want to pull it?',
+				'Server racks with alllllll the blinkenlights.',
+			];
+
+		if (slider){
+			slider.parentNode.classList.remove('hidden');
+			slider.parentNode.previousElementSibling.style.flex = '1 0 auto';
+			show_off();
+		}
+
+		function show_off(){
+			gallery.currentCount = slider.value; // expando ftw
+
+			slider.addEventListener('input', function(e){
+				// it is possible to move the slider too quickly and break this
+				// it is also possible I've already spent too long on this, so....
+				layout_gallery(e.target.value);
+			});
+		}
+
+		function layout_gallery(num){
+			if (gallery.currentCount == num){ return false; }
+
+			var prevFiller = gallery.querySelector('.filler');
+			if (prevFiller){
+				gallery.removeChild(prevFiller);
+			}
+
+			var lis = gallery.children;
+
+			if (num < gallery.currentCount){
+				// remove nodes
+				while ((lis.length - 1) > num) { // -1 to offset the .spotlight child
+					gallery.removeChild(gallery.lastElementChild);
+				}
+			} else {
+				// add nodes
+				for (var i = (gallery.currentCount + 1); i <= num; i++) {
+					gallery.insertAdjacentHTML('beforeend', '<li><a href="dist/0'+num+'.jpg"><img src="dist/0'+num+'.jpg" alt="" data-caption="'+btoa(captions[num])+'"/></a></li>');
+				}
+			}
+
+			switch (parseInt(num)) {
+				case 4:
+				case 6:
+				case 8:
+					var filler = document.createElement('li');
+					filler.className = 'filler';
+					gallery.appendChild(filler);
+					break;
+			}
+
+			gallery.className = 'tv-wall no-bullets js x'+num; // removing 'x'+gallery.currentCount is cleaner, but more fragile...and this is just a toy
+			gallery.currentCount = num;
+		}
+	</script>
+
+	<script type="text/javascript" src="src/js/tv-wall.js"></script>
+</body>
+
+</html>

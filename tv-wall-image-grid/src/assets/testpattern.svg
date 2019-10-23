@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1599 894">
+	<defs>
+		<pattern id="gray-grid" width="81" height="64" patternUnits="userSpaceOnUse" patternTransform="translate(32 32)">
+			<path d="M0 0h79v62H0z" fill="gray"/>
+		</pattern>
+		<clipPath id="middle-circle">
+			<circle cx="800" cy="447" r="390"/>
+		</clipPath>
+	</defs>
+
+	<path d="M0 0h1600v900H0z" fill="#fff"/>
+	<path d="M15 32v900M1584 32v900" stroke="#000" stroke-width="30" stroke-dasharray="62 66"/>
+	<path d="M32 15h1535M32 879h1535" stroke="#000" stroke-width="30" stroke-dasharray="79 83"/>
+
+	<path d="M32 32h1535v832H32" fill="url(#gray-grid)"/>
+
+	<rect x="194" y="96" width="79" height="351" fill="#00ff80"/>
+	<rect x="194" y="447" width="79" height="351" fill="#ff0080"/>
+	<rect x="273" y="96" width="81" height="126" fill="#0080ff"/>
+	<rect x="273" y="672" width="81" height="126" fill="#ff8000"/>
+
+	<rect x="1247" y="96" width="81" height="126" fill="#0080ff"/>
+	<rect x="1247" y="672" width="81" height="126" fill="#ff8000"/>
+	<rect x="1328" y="96" width="79" height="351" fill="#80ff00"/>
+	<rect x="1328" y="447" width="79" height="351" fill="#8000ff"/>
+
+	<circle cx="800" cy="447" r="390" fill="#fff"/>
+
+	<g clip-path="url(#middle-circle)">
+		<path d="M680 96h241v64h-241z"/>
+		<path d="M437 192h727" stroke="#000" stroke-width="64" stroke-dasharray="160 41 2 364"/>
+
+		<path d="M437 256h727" stroke="#ccc" stroke-width="64"/>
+		<path d="M437 256h727" stroke="#000" stroke-width="64" stroke-dasharray="50 41"/>
+
+		<path d="M410 288h130v128h-130z" fill="#ff0"/>
+		<path d="M540 288h130v128h-130z" fill="#0ff"/>
+		<path d="M670 288h131v128h-131z" fill="#0f0"/>
+		<path d="M801 288h130v128h-130z" fill="#f0f"/>
+		<path d="M930 288h130v128h-130z" fill="#f00"/>
+		<path d="M1060 288h130v128h-130z" fill="#00f"/>
+
+		<path d="M356 448h889" stroke="#000" stroke-width="64" stroke-dasharray="79 2"/>
+		<path d="M356 480h889v128H356z"/>
+
+		<path d="M503 544h120" stroke="#fff" stroke-width="128" stroke-dasharray="10"/>
+		<path d="M623 544h120" stroke="#fff" stroke-width="128" stroke-dasharray="6"/>
+		<path d="M743 544h120" stroke="#fff" stroke-width="128" stroke-dasharray="4"/>
+		<path d="M863 544h120" stroke="#fff" stroke-width="128" stroke-dasharray="2"/>
+		<path d="M983 544h120" stroke="#fff" stroke-width="128" stroke-dasharray="1"/>
+
+		<path d="M410 608h130v64h-130z"/>
+		<path d="M540 608h130v64h-130z" fill="#333"/>
+		<path d="M670 608h130v64h-130z" fill="#666"/>
+		<path d="M800 608h130v64h-130z" fill="#999"/>
+		<path d="M930 608h130v64h-130z" fill="#ccc"/>
+
+		<path d="M605 672h390v64H605z"/>
+		<path d="M518 736h565v112H518z" fill="#ff0"/>
+		<path d="M761 736h79v112H761z" fill="#f00"/>
+
+		<path d="M761 352h79v192h-79z"/>
+		<path d="M801 352v192M356 448h889" stroke="#fff" stroke-width="2"/>
+	</g>
+</svg>

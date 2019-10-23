@@ -1,0 +1,278 @@
+// no grid, no js: just show some images that link to larger versions
+
+// no grid, js: we can have .spotlight visible and larger and on top and still swap images
+
+// grid, no js: just show some images that link to larger versions (and maybe don't even bother with grid)
+
+// grid, js: do the damn thing
+
+.tv-wall {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	li {
+		flex: 0 1 30%;
+
+		margin: .375em;
+		line-height: 0;
+	}
+
+	a,
+	.filler {
+		height: 0;
+		position: relative;
+		padding-bottom: 56.25%;
+		overflow: hidden;
+	}
+
+	a {
+		display: block;
+		background-color: $color-primary;
+
+		img,
+		&:after {
+			transition: opacity .2s linear;
+		}
+
+		&:after {
+			content: "+";
+			color: #fff;
+			font-weight: 700;
+			font-size: 4em;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			margin: 0;
+			opacity: 0;
+		}
+
+		&:hover {
+			img {
+				opacity: .3;
+			}
+
+			&:after {
+				opacity: 1;
+			}
+		}
+
+		&.active {
+			background: $color-bars;
+
+			img,
+			&:after {
+				transition: none;
+				opacity: 0 !important;
+			}
+		}
+	}
+
+	.spotlight,
+	.filler {
+		display: none;
+	}
+
+	&.js {
+		.spotlight {
+			display: block;
+		}
+	}
+
+	.spotlight {
+		flex: 0 1 90%;
+	}
+
+	figure {
+		position: relative;
+
+		div {
+			background: $color-bars;
+		}
+
+		img {
+			display: block;
+		}
+	}
+
+	figcaption {
+		padding: .375em;
+		line-height: 1.5;
+		border: 1px solid $color-text;
+		margin-top: .75em;
+
+		&:empty {
+			opacity: 0;
+		}
+
+		&:before,
+		&:after {
+			// we don't want the page to shift when JS empties this string, so take up at least 1 line-height
+			content: " ";
+			display: inline-block;
+		}
+	}
+}
+
+@supports (display: grid){
+	.tv-wall.js {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-gap: .375rem;
+
+		li {
+			margin: 0;
+		}
+
+		figure {
+		}
+
+		.spotlight {
+		}
+
+		.filler {
+			display: block;
+			background: url('src/assets/testpattern.svg') 0 0 no-repeat;
+			background-size: cover;
+		}
+
+		/*
+		+-----------------------+
+		|                 |  1  |
+		|                 +-----+
+		|                 |  2  |
+		|                 +-----+
+		|                 |  3  |
+		+-----------------+-----+
+		*/
+		&.x3 {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+
+			.spotlight {
+				grid-column: span 3;
+				grid-row: span 4; // 1 extra so our figcaption's height doesn't stretch grid-gap
+			}
+		}
+
+		/*
+		+-------+-------+-------+
+		|   1   |   2   |   3   |
+		+-------+---------------+
+		|               |   4   |
+		|               +-------+
+		|               |   x   |
+		+---------------+-------+
+
+		+-------+-------+-------+
+		|   1   |   2   |   3   |
+		+-------+---------------+
+		|               |   4   |
+		|               +-------+
+		|               |   5   |
+		+---------------+-------+
+		*/
+		&.x4,
+		&.x5 {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+
+			li {
+				order: 3;
+
+				&:nth-of-type(-n+4) { // top row is three, plus one for the prepended spotlight
+					order: 1;
+				}
+			}
+
+			.spotlight {
+				order: 2 !important;
+				grid-column: span 2;
+				grid-row: span 3;
+			}
+		}
+
+		/*
+		+-----+-----+-----+-----+
+		|  1  |  2  |  3  |  4  |
+		+-----+-----+-----------+
+		|                 |  5  |
+		|                 +-----+
+		|                 |  6  |
+		|                 +-----+
+		|                 |  x  |
+		+-----------------+-----+
+
+		+-----+-----+-----+-----+
+		|  1  |  2  |  3  |  4  |
+		+-----+-----+-----------+
+		|                 |  5  |
+		|                 +-----+
+		|                 |  6  |
+		|                 +-----+
+		|                 |  7  |
+		+-----------------+-----+
+		*/
+		&.x6,
+		&.x7 {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+
+			li {
+				order: 3;
+
+				&:nth-of-type(-n+5) { // top row is four, plus one for the prepended spotlight
+					order: 1;
+				}
+			}
+
+			.spotlight {
+				order: 2 !important;
+				grid-column: span 3;
+				grid-row: span 4;
+			}
+		}
+
+		/*
+		+-----+-----+-----+-----+-----+
+		|  1  |  2  |  3  |  4  |  5  |
+		+-----+-----+-----+-----------+
+		|                       |  6  |
+		|                       +-----+
+		|                       |  7  |
+		|                       +-----+
+		|                       |  8  |
+		|                       +-----+
+		|                       |  x  |
+		+-----------------------+-----+
+
+		+-----+-----+-----+-----+-----+
+		|  1  |  2  |  3  |  4  |  5  |
+		+-----+-----+-----+-----------+
+		|                       |  6  |
+		|                       +-----+
+		|                       |  7  |
+		|                       +-----+
+		|                       |  8  |
+		|                       +-----+
+		|                       |  9  |
+		+-----------------------+-----+
+		*/
+		&.x8,
+		&.x9 {
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+
+			li {
+				order: 3;
+
+				&:nth-of-type(-n+6) { // top row is five, plus one for the prepended spotlight
+					order: 1;
+				}
+			}
+
+			.spotlight {
+				order: 2 !important;
+				grid-column: span 4;
+				grid-row: span 5;
+			}
+		}
+	}
+}
